@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+        <font color="blue">
+            <br>
+            <h2><font size="25">Torneio "{{ torneio.nome }}"</font></h2>
+            <br>
+            <b><a>Data Inicio:</a></b> {{ torneio.dataInicio }}
+            <br>
+            <b><a>Data Fim: </a></b> {{torneio.dataFim}}
+            <br>
+            <b><a>Dias de Jogo:</a></b> {{ torneio.diasJogo }}
+            <br>
+            <b><a>Horario dos Jogos:</a></b> {{ torneio.horario }}
+            <br>
+            <b><a>Equipas no Torneio:</a></b> {{ numero }} / 16
+            <br>
+            <br>
+            {% for equipa in equipas %}
+                <b><a>Nome Equipa:</a></b>
+                <a href="{% url 'bd-teamdetail' equipa.pk %}">{{ equipa.nome }}</a>
+                <br>
+            {% endfor %}
+            <br>
+            <br>
+            <b><a>Para adicionar uma equipa necessita de dar signup</a></b>
+            <br>
+            <a href={% url 'bd-signup' %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">SIGN UP</a
+        </font>
+        <br><br>
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+      <br>
+      <font color="blue">
+        <h2><font size="25">Player Info</font></h2>
+        <br>
+            <a href={% url 'bd-teamMenu' pk cc %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Voltar </a>
+               <br>
+               <br>
+                  {% for jogador in jogadores %}
+                        <a>Nome:</a>
+                        <a href={% url "bd-playerinfo" pk cc jogador.user_cc.cc %} >{{ jogador.user_cc.first_name }}   {{ jogador.user_cc.last_name }}</a>
+                        <a>Posicao: </a>
+                        <a>{{ jogador.posicao }}</a>
+                        <a>Capitao:</a>
+                        <a>{{ jogador.capitao}}</a>
+                        <br>
+              {% endfor %}
+              <form method="post">
+                <b>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                </b>
+                <button type="submit" class="btn btn-primary"><font size="5">Add Captain</font></button>
+                <br>
+            </form>
+        <br>
+      </font>
+      <br><br>
+    </div>
+{% endblock %}

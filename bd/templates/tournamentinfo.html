@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+        <font color="blue">
+            <br>
+            <h2><font size="25">Torneio "{{ torneio.nome }}"</font></h2>
+            <br>
+            <b><a>Data Inicio:</a></b> {{ torneio.dataInicio }}
+            <br>
+            <b><a>Dias de Jogo:</a></b> {{ torneio.diasJogo }}
+            <br>
+            <b><a>Horario dos Jogos:</a></b> {{ torneio.horarioInicio }}
+            <br>
+            <b><a>Equipas no Torneio:</a></b> {{ numero }} / 16
+            <br>
+            <br>
+            {% for equipa in equipas %}
+                <b><a>Nome Equipa:</a></b>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'bd-teamdetail2' equipa.pk user.cc ver%}">{{ equipa.nome }}</a>
+                {% else %}
+                    <a href="{% url 'bd-teamdetail' equipa.pk %}">{{ equipa.nome }} pontos: {{ equipa.pontos }}</a>
+                {% endif %}
+                <br>
+            {% endfor %}
+            <br>
+            {% if numero < 16 and ver == 0%}
+                <a href={% url 'bd-createTeam' torneio.pk %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add Team</a>
+                <a href={% url 'bd-home' %} class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Voltar</a>
+            {% else %}
+                <a href={% url 'bd-home' %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Voltar</a>
+            {% endif %}
+
+            {% if numero >= 2 and gestor == user and completas == 1 and torneio.estado == 0%}
+                <a href={% url 'bd-geraJogos' torneio.pk %} class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Gerar Jogos</a>
+            {% endif %}
+
+            {% if torneio.estado == 1 %}
+                <a href={% url 'bd-estadoJogos' torneio.pk user.cc %} class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Ver estado</a>
+            {% endif %}
+        </font>
+        <br><br>
+    </div>
+{% endblock %}

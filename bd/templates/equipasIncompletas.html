@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+        <font color="blue">
+            <br>
+            <h2><font size="25">Equipas Incompletas</font></h2>
+            <br>
+            <font size="5">
+                {% for team in equipasI %}
+                    <a>Equipa #{{ team.id }}:</a>
+                    <a href="{% url 'bd-joinTeam' team.pk%}">{{ team.nome }}</a>
+                    <br>
+                {% endfor %}
+            </font>
+            <br>
+        </font>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+    	<font color="blue">
+    		<b>
+    			<br>
+			    <h2><font size="25">Escreve Notificacao</font></h2>
+			    <br><br>
+			    <form method="post" >
+			        {% csrf_token %}
+			        {{ form.as_p }}
+			        <button type="submit" class="btn btn-primary"><font size="5">Send</font></button>
+			    </form>
+		    </b>
+	    </font>
+	    <br>
+    </div>
+{%  endblock %}

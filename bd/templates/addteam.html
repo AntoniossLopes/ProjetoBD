@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+        <font color="blue">
+            <br>
+            <h2>Create Team</h2>
+            <br>
+            <form method="post">
+                <b>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="hidden"  name = "torneio" value ="{{ pk }} " />
+                    <input type="hidden"  name = "emtorneio" value =True  />
+                </b>
+                <button type="submit" class="btn btn-primary"><font size="5">Create Team</font></button>
+                <br>
+            </form>
+        </font>
+        <br>
+    </div>
+{%  endblock %}

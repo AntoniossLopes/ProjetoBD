@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+        <font color="blue">
+            <br>
+            <h2><font size="25">Jogo {{ jogo.pk }}</font></h2>
+            <br>
+            <font size="5">
+                <form method="post">
+			        {% csrf_token %}
+			        {{ form.as_p }}
+                    <a href={% url 'bd-estadoJogos' jogo.torneio.pk user.cc %} class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Voltar</a>
+			        <button type="submit" class="btn btn-primary"><font size="4">Gravar</font></button>
+
+			    </form>
+                <br>
+            </font>
+            <br>
+        </font>
+    </div>
+{% endblock %}

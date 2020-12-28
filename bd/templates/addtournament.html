@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+	    <font color="blue">
+		    <b>
+		    	<br>
+			    <h2>Create Tournament</h2>
+			    <br>
+			    <form method="post">
+			        {% csrf_token %}
+			        {{ form.as_p }}
+			        <button type="submit" class="btn btn-primary"><font size="4">Create Tournament</font></button>
+			        <br>
+			    </form>
+			</b>
+		</font>
+		<br>
+    </div>
+{%  endblock %}

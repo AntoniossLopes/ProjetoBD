@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+        <font color="blue">
+            <br>
+            <h2>Faltas/Atrasos</h2>
+            <br>
+            <br>
+            {% for jogador in jogadores %}
+                <a>Nome: {{ jogador.user_cc.first_name }} {{ jogador.user_cc.last_name }} |
+                    Pagamentos Feitos: {{ jogador.pagamentosCompletos }} |
+                    Pagamentos Faltas: {{ jogador.numFalhasPagamento }} |
+                    Jogos Faltados: {{jogador.numFalhasJogos}} |
+                    Saldo: {{ jogador.saldo }}
+                    <br>
+                    <br>
+                </a>
+            {% endfor %}
+        <form method="post">
+                <b>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                     <select name = "tipo" >
+                         <option value="falta jogo">Falta Jogo</option>
+                         <option value="falta pagamento">Falta Pagamento</option>
+                     </select>
+                    <br>
+                </b>
+                <button type="submit" class="btn btn-primary"><font size="3">Confirm</font></button>
+                <br>
+            </form>
+        </font>
+        <br><br>
+        <a href={% url 'bd-teamMenu' pk cc %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Voltar</a>
+        <br><br>
+    </div>
+{% endblock %}

@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+        <font color="blue">
+            <br>
+            <h2><b>Manage Team</b></h2>
+           <br>
+           <br>
+            <a>Tatica: {{equipa.DefesasTatica}} / {{ equipa.MediosTatica}} / {{ equipa.AvancadosTatica }}</a>
+            <br>
+            <br>
+          <form method="post" >
+              {% csrf_token %}
+
+           <a>Guarda-Redes</a>
+            {% for jogador in jogadoresGK %}
+                <a>Nome:</a>
+                <a>{{ jogador.user_cc.first_name }}   {{ jogador.user_cc.last_name }} |</a>
+                         <input type="hidden" name="Id" value={{ jogador.user_cc.cc }}>
+                <a>Posicao: </a>
+                <a>{{ jogador.posicao }} |</a>
+                <a>Estado Atual</a>
+                {% if jogador.titular == True %}
+                    <a>Titular |</a>
+                {% endif %}
+                {% if jogador.suplente == True %}
+                    <a>Suplente |</a>
+                {% endif %}
+                {% if jogador.reserva == True %}
+                    <a>Reserva |</a>
+                {% endif %}
+                 <select name = "tipo" >
+                        {% if jogador.titular == True %}
+                            <option value="titular">titular</option>
+                             <option value="suplente">suplente</option>
+                            <option value="reserva">reserva</option>
+                        {% endif %}
+                        {% if jogador.suplente == True %}
+                            <option value="suplente">suplente</option>
+                            <option value="titular">titular</option>
+                            <option value="reserva">reserva</option>
+                        {% endif %}
+                         {% if jogador.reserva == True %}
+                             <option value="reserva">reserva</option>
+                            <option value="titular">titular</option>
+                             <option value="suplente">suplente</option>
+                        {% endif %}
+                    </select>
+                <br>
+            {% endfor %}
+            <br>
+            <a>Defesas</a>
+            <br>
+              {% for jogador in jogadoresDefesas %}
+                  <a>Nome:</a>
+                  <a>{{ jogador.user_cc.first_name }}   {{ jogador.user_cc.last_name }} |</a>
+                                <input type="hidden" name="Id" value={{ jogador.user_cc.cc }}>
+                  <a>Posicao: </a>
+                  <a>{{ jogador.posicao }} |</a>
+                  <a>Estado Atual</a>
+                  {% if jogador.titular == True %}
+                      <a>Titular |</a>
+                  {% endif %}
+                  {% if jogador.suplente == True %}
+                      <a>Suplente |</a>
+                  {% endif %}
+                  {% if jogador.reserva == True %}
+                      <a>Reserva |</a>
+                  {% endif %}
+                  <select name = "tipo" >
+                        {% if jogador.titular == True %}
+                            <option value="titular">titular</option>
+                             <option value="suplente">suplente</option>
+                            <option value="reserva">reserva</option>
+                        {% endif %}
+                        {% if jogador.suplente == True %}
+                            <option value="suplente">suplente</option>
+                            <option value="titular">titular</option>
+                            <option value="reserva">reserva</option>
+                        {% endif %}
+                         {% if jogador.reserva == True %}
+                             <option value="reserva">reserva</option>
+                            <option value="titular">titular</option>
+                             <option value="suplente">suplente</option>
+                        {% endif %}
+                    </select>
+                <br>
+              {% endfor %}
+                    <br>
+            <a>Medios</a>
+            <br>
+              {% for jogador in jogadoresMedios %}
+                        <a>Nome:</a>
+                  <a>{{ jogador.user_cc.first_name }}   {{ jogador.user_cc.last_name }} |</a>
+                         <input type="hidden" name="Id" value={{ jogador.user_cc.cc }}>
+                    <a>Posicao: </a>
+                    <a>{{ jogador.posicao }} |</a>
+                    <a>Estado Atual</a>
+                    {% if jogador.titular == True %}
+                        <a>Titular |</a>
+                    {% endif %}
+                    {% if jogador.suplente == True %}
+                        <a>Suplente |</a>
+                    {% endif %}
+                    {% if jogador.reserva == True %}
+                        <a>Reserva |</a>
+                    {% endif %}
+                    <select name = "tipo" >
+                        {% if jogador.titular == True %}
+                            <option value="titular">titular</option>
+                             <option value="suplente">suplente</option>
+                            <option value="reserva">reserva</option>
+                        {% endif %}
+                        {% if jogador.suplente == True %}
+                            <option value="suplente">suplente</option>
+                            <option value="titular">titular</option>
+                            <option value="reserva">reserva</option>
+                        {% endif %}
+                         {% if jogador.reserva == True %}
+                             <option value="reserva">reserva</option>
+                            <option value="titular">titular</option>
+                             <option value="suplente">suplente</option>
+                        {% endif %}
+                    </select>
+                <br>
+              {% endfor %}
+                    <br>
+            <a>Avancados</a>
+            <br>
+              {% for jogador in jogadoresAvancados %}
+                  <a>Nome:</a>
+                  <a>{{ jogador.user_cc.first_name }}   {{ jogador.user_cc.last_name }} |</a>
+                         <input type="hidden" name="Id" value={{ jogador.user_cc.cc }}>
+                  <a>Posicao: </a>
+                  <a>{{ jogador.posicao }} |</a>
+                  <a>Estado Atual</a>
+                  {% if jogador.titular == True %}
+                      <a>Titular |</a>
+                  {% endif %}
+                  {% if jogador.suplente == True %}
+                      <a>Suplente |</a>
+                  {% endif %}
+                  {% if jogador.reserva == True %}
+                      <a>Reserva |</a>
+                  {% endif %}
+                <select name = "tipo" >
+                        {% if jogador.titular == True %}
+                            <option value="titular">titular</option>
+                             <option value="suplente">suplente</option>
+                            <option value="reserva">reserva</option>
+                        {% endif %}
+                        {% if jogador.suplente == True %}
+                            <option value="suplente">suplente</option>
+                            <option value="titular">titular</option>
+                            <option value="reserva">reserva</option>
+                        {% endif %}
+                         {% if jogador.reserva == True %}
+                             <option value="reserva">reserva</option>
+                            <option value="titular">titular</option>
+                             <option value="suplente">suplente</option>
+                        {% endif %}
+                    </select>
+                <br>
+              {% endfor %}
+                    <br>
+                    <br>
+                    <button type="submit" class="btn btn-primary"><font size="5">Confirm</font></button>
+          </form>
+        </font>
+        <br><br>
+        <br><br>
+    </div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+      <br>
+      <font color="blue">
+        <h2><font size="25">Profile</font></h2>
+        <br>
+        <b><a>Username:</a></b>
+        <a>{{ user.username }}</a>
+        <br>
+        <b><a>Name:</a></b>
+        <a>{{ user.first_name }} {{ user.last_name }}</a>
+        <br>
+        <b><a>Email:</a></b>
+        <a>{{ user.email}}</a>
+        <br>
+        <b><a>CC:</a></b>
+        <a>{{ user.cc }}</a>
+        <br>
+        <b><a>Phone Number:</a></b>
+        <a>{{ user.contacto }}</a>
+        <br>
+        <b><a>Admin?</a></b>
+        {% if user.admin %}
+                <a>Sim</a>
+        {% endif %}
+        {% if not user.admin %}
+                <a>Nao</a>
+        {% endif %}
+      <br>
+        <b><a>Gestor de Torneio?</a></b>
+        {% if user.gestor_torneio %}
+                <a>Sim</a>
+        {% endif %}
+        {% if not user.gestor_torneio %}
+                <a>Nao</a>
+        {% endif %}
+        <br><br>
+        <!--<a>PRIMARY KEY:</a>
+        <a>{{ user.pk }}</a>
+        <br>-->
+        <a href={% url 'bd-changeProfile' user.pk %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Alterar Dados</a>
+        {% if user.admin %}
+                <a href={% url 'bd-permissoes' %} class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Dar permissões</a>
+        {% endif %}
+      </font>
+      <br><br>
+    </div>
+{% endblock %}

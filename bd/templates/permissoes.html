@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+        <font color="blue">
+            <br>
+            <h2><font size="25">Torneios</font></h2>
+            <br>
+            <font size="5">
+            <form method="post">
+                {% for user2 in user_numero %}
+                    {% if not user2.gestor_torneio and user2.pk != user.pk %}
+
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        {{ user2.username }}
+                        <input type="checkbox"  name = "{{ user2.pk }}0" value ="{{ user2.pk }} " />
+                        <br>
+
+                    {% endif %}
+
+
+                    {% if user2.gestor_torneio and user2.pk != user.pk %}
+
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        {{ user2.username }}
+                        <input type="checkbox"  name = "{{ user2.pk }}02" value ="{{ user2.pk }} " checked/>
+                        <br>
+
+                        <!--<div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="{{ user2.pk }}" checked>
+                            <label class="custom-control-label" for="{{ user2.pk }}">{{ user2.username }}</label>
+                        </div>-->
+                    {% endif %}
+
+                {% endfor %}
+            <button type="submit" class="btn btn-primary"><font size="5">Gravar</font></button>
+            </form>
+
+            </font>
+            <br>
+        </font>
+    </div>
+{% endblock %}

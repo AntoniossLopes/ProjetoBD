@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div align="center" class="container" style="background: #f8f8f8" opacity="0.5">
+    <font color="blue">
+	    <b>
+		    <br><br><br>
+		    <h2><font size="25">Login</font></h2>
+		    <br><br>
+		    <form method="post">
+		    {% csrf_token %}
+		    <p>
+		    <font size="5">
+			    <label for="username">Username:</label>
+			    <span style="padding-left: 2em">
+			    	<input type="text" name="username" placeholder="Username">
+			    </span>
+			    <br>
+			    <label for="password">Password: </label>
+			    <span style="padding-left: 2.3em"> 
+			    	<input type="password" name="password" placeholder="Password">
+			    </span>
+			    <br>
+			</font>
+		</b>
+    </font>
+    <br>
+      <button type="submit" class="btn btn-primary"><font size="5">Login</font></button></form>
+      <br><br>
+</div>
+{% endblock %}

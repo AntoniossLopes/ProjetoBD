@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+        <font color="blue">
+            <br>
+            <h2><font size="25">Melhores marcadores</font></h2>
+            <br>
+            <font size="5">
+                <a> 1. {{ first.user_cc.first_name }} {{ first.user_cc.last_name }} ({{ first.equipa }}) - {{ first.golos }}</a>
+                <br>
+                <a> 2. {{ second.user_cc.first_name }} {{ second.user_cc.last_name }} ({{ second.equipa }}) - {{ second.golos }}</a>
+                <br>
+                <a> 3. {{ third.user_cc.first_name }} {{ third.user_cc.last_name }} ({{ third.equipa }}) - {{ third.golos }}</a>
+                <br>
+            </font>
+            <br>
+        </font>
+        <a href={% url 'bd-geraJogos' pk %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Voltar</a>
+        <br><br>
+    </div>
+{% endblock %}

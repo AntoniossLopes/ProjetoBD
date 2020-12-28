@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+        <b>
+        <br>
+        <font color="blue">
+            <h2>Captain Details</h2>
+            <br>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="hidden"  name = "user_cc" value ={{user.pk}}  />
+                <input type="hidden"  name = "reserva" value ={{ False }}  />
+                <input type="hidden"  name = "capitao" value = {{ True }}  />
+                <!--<input type="hidden"  name = "equipa" value = {{pk}}  />  -->
+                <br>
+                <button type="submit" class="btn btn-primary"><font size="4">Add Captain</font></button>
+                <br>
+            </form>
+        </font>
+        <br>
+    </div>
+{%  endblock %}

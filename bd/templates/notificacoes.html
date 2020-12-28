@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href={% url 'bd-proxSemana' %} class="btn btn-primary btn-lg btn-block"  aria-pressed="true">Veja aqui os proximos jogos!</a>
+    <div class="container" style="background: #f8f8f8" align="center">
+        <font color="blue">
+            <br>
+            <h2><font size="25">Notificacoes</font></h2>
+            <br>
+            {% for notif in notifs %}
+                {% if notif.origem != NULL %}
+                <a>Sender: {{ notif.origem }} </a>
+                {% endif %}
+                <a>Mensagem : {{ notif.notif }}</a>
+                <br>
+            {% endfor %}
+            <br>
+          <a href={% url 'bd-home'%} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Voltar</a>
+        </font>
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+        <font color="blue">
+            <br>
+            <h2><b>Confirmation Menu</b></h2>
+            <br>
+            <br>
+            {% if tamanho == 0 %}
+                <a><b>No users to confirm yet.......</b></a>
+            {% endif %}
+          <form method="post" >
+              {% csrf_token %}
+            {% for needconfirm in listaUsers %}
+                <a>Username</a>
+                <a>{{ needconfirm.username }}</a>
+                 <input type="hidden" name="Id" value={{ needconfirm.username }}>
+                <select name = "tipo" >
+                    {% if needconfirm.estado == False %}
+                        <option value = "confirm">confirm</option>
+                        <option value = "not confirmed">not confirmed</option>
+                    {% endif %}
+                    {% if needconfirm.estado == True %}
+                        <option value = "not confirmed">not confirmed</option>
+                        <option value = "confirm">confirm</option>
+                    {% endif %}
+                </select>
+                <br>
+            {% endfor %}
+            <br>
+            {% if tamanho > 0 %}
+            <button type="submit" class="btn btn-primary"><font size="5">Confirm</font></button>
+            {% endif %}
+             <a href={% url 'bd-home' %} class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Voltar</a>
+         </form>
+        </font>
+        <br><br>
+    </div>
+{% endblock %}

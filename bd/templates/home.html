@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href={% url 'bd-proxSemana' %} class="btn btn-primary btn-lg btn-block"  aria-pressed="true">Veja aqui os proximos jogos!</a>
+    <div class="container" style="background: #f8f8f8" align="center">
+        <font color="blue">
+            <br>
+            <h2><font size="25">Torneios</font></h2>
+            <br>
+            <font size="5">
+                {% for torneio in torneio_numero %}
+                    <a>Torneio #{{ torneio.id }}:</a>
+
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'bd-infotour' torneio.pk user.pk %}">{{ torneio.nome }}</a>
+                    {% else %}
+                        <a href="{% url 'bd-tournamentGuest' torneio.pk %}">{{ torneio.nome }}</a>
+                    {% endif %}
+                    <br>
+                {% endfor %}
+            </font>
+            <br>
+        </font>
+    </div>
+{% endblock %}

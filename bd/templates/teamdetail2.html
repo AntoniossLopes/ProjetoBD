@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+        <font color="blue">
+            <br>
+            <h2><b>Detalhes de {{ equipa.nome }}</b></h2>
+            <br>
+            <a><b>Número de Guarda Redes: </b></a>{{ equipa.numGuardaRedes }}<span style="padding-left: 2em"><b>Número de Guarda Redes Suplentes: </b>{{ equipa.numGuardaRedesSuplentes }}</span>
+            <br>
+            <a><b>Número de Defesas: </b></a>{{ equipa.numDefesas }}<span style="padding-left: 2em"><b>Número de Defesas Suplentes: </b>{{ equipa.numDefesasSuplentes }}</span>
+            <br>
+            <a><b>Número de Medios: </b></a>{{ equipa.numMedios }}<span style="padding-left: 2em"><b>Número de Medios Suplentes: </b>{{ equipa.numMediosSuplentes }}</span>
+            <br>
+            <a><b>Número de Avançados: </b></a>{{ equipa.numAvancados }}<span style="padding-left: 2em"><b>Número de Avançados Suplentes: </b>{{ equipa.numAvancadosSuplentes }}</span>
+            <br>
+            <a>First Name/ Last Name / Posicao /Capitao</a>
+           <br>
+           <br>
+            <a>Tatica: {{equipa.DefesasTatica}} / {{ equipa.MediosTatica}} / {{ equipa.AvancadosTatica }}</a>
+            <br>
+            <a>Guarda-Redes</a>
+            {% for jogador in jogadoresTitularesGK %}
+                <a>Nome:</a>
+                <a href={% url "bd-playerinfotour" pk cc jogador.user_cc.cc ver%} >{{ jogador.user_cc.first_name }}   {{ jogador.user_cc.last_name }}</a>
+                        <a>Posicao: </a>
+                        <a>{{ jogador.posicao }}</a>
+                        {% if jogador.capitao == True %}
+                            <a>Capitao </a>
+                        {% endif %}
+                <br>
+            {% endfor %}
+            <br>
+            <a>Defesas</a>
+            <br>
+              {% for jogador in jogadoresTitularesDefesas %}
+                        <a>Nome:</a>
+                                               <a href={% url "bd-playerinfotour" pk cc jogador.user_cc.cc ver%} >{{ jogador.user_cc.first_name }}   {{ jogador.user_cc.last_name }}</a>
+
+                        <a>Posicao: </a>
+                        <a>{{ jogador.posicao }}</a>
+                        {% if jogador.capitao == True %}
+                            <a>Capitao </a>
+                        {% endif %}
+                        <br>
+              {% endfor %}
+                    <br>
+            <a>Medios</a>
+            <br>
+              {% for jogador in jogadoresTitularesMedios %}
+                        <a>Nome:</a>
+                                          <a href={% url "bd-playerinfotour" pk cc jogador.user_cc.cc ver%} >{{ jogador.user_cc.first_name }}   {{ jogador.user_cc.last_name }}</a>
+
+                        <a>Posicao: </a>
+                        <a>{{ jogador.posicao }}</a>
+                         {% if jogador.capitao == True %}
+                            <a>Capitao </a>
+                        {% endif %}
+                        <br>
+              {% endfor %}
+                    <br>
+            <a>Avancados</a>
+            <br>
+              {% for jogador in jogadoresTitularesAvancados %}
+                        <a>Nome:</a>
+                                              <a href={% url "bd-playerinfotour" pk cc jogador.user_cc.cc ver%} >{{ jogador.user_cc.first_name }}   {{ jogador.user_cc.last_name }}</a>
+
+                        <a>{{ jogador.posicao }}</a>
+                       {% if jogador.capitao == True %}
+                            <a>Capitao </a>
+                        {% endif %}
+                        <br>
+              {% endfor %}
+                    <br>
+            <a>Suplentes</a>
+            <br>
+              {% for jogador in jogadoresSuplentes %}
+                        <a>Nome:</a>
+                        <a href={% url "bd-playerinfotour" pk cc jogador.user_cc.cc ver%} >{{ jogador.user_cc.first_name }}   {{ jogador.user_cc.last_name }}</a>
+                        <a>Posicao: </a>
+                        <a>{{ jogador.posicao }}</a>
+                         {% if jogador.capitao == True %}
+                            <a>Capitao </a>
+                        {% endif %}
+                        <br>
+              {% endfor %}
+                        <br>
+            <a>Reservas</a>
+            <br>
+              {% for jogador in jogadoresReservas %}
+                        <a>Nome:</a>
+                        <a href={% url "bd-playerinfotour" pk cc jogador.user_cc.cc ver%} >{{ jogador.user_cc.first_name }}   {{ jogador.user_cc.last_name }}</a>
+                        <a>Posicao: </a>
+                        <a>{{ jogador.posicao }}</a>
+                         {% if jogador.capitao == True %}
+                            <a>Capitao </a>
+                        {% endif %}
+                        <br>
+              {% endfor %}
+        </font>
+        <br><br>
+        {% if user.is_authenticated and ver == 1%}
+            <a href={% url 'bd-infotour' torneio.pk user.pk %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Voltar</a>
+        {% else %}
+            <a href={% url 'bd-joinTeam' equipa.pk %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Join Team</a>
+        {% endif %}
+        <br><br>
+    </div>
+{% endblock %}

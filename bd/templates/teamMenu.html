@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+        <font color="blue">
+            <br>
+            <h2>Equipa Nome:  {{ equipa.nome }}</h2>
+                <br>
+                 <a href={% url 'bd-myteam' cc %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Voltar </a>
+                  <a href={% url 'bd-escrevenotif' equipa.nome cc %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Escreve Mensagem</a>
+                    {% if usuario.capitao == True %}
+                        <a href={% url 'bd-newcaptain' equipa.nome cc %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Novo Capitao</a>
+                        <a href={% url 'bd-registaFaltas' equipa.nome cc %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Regista Faltas</a>
+                        <br>
+                        <br>
+                        <a href={% url 'bd-manageteam' equipa.nome cc %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Change Team</a>
+                        <a href={% url 'bd-faltasPagamentos' equipa.nome cc %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Pagamentos</a>
+                        <a href={% url 'bd-expusarjogadores' equipa.nome cc %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Expulsar Jogador</a>
+                    {% endif %}
+                 <br>
+           <br>
+           <br>
+           <a>First Name/ Last Name / Posicao /Capitao</a>
+           <br>
+           <br>
+            <a>Tatica: {{equipa.DefesasTatica}} / {{ equipa.MediosTatica}} / {{ equipa.AvancadosTatica }}</a>
+            <br>
+            <a>Guarda-Redes</a>
+            {% for jogador in jogadoresTitularesGK %}
+                <a>Nome:</a>
+                        <a href={% url "bd-playerinfo" pk cc jogador.user_cc.cc %} >{{ jogador.user_cc.first_name }}   {{ jogador.user_cc.last_name }}</a>
+                        <a>Posicao: </a>
+                        <a>{{ jogador.posicao }}</a>
+                        {% if jogador.capitao == True %}
+                            <a>Capitao </a>
+                        {% endif %}
+                <br>
+            {% endfor %}
+            <br>
+            <a>Defesas</a>
+            <br>
+              {% for jogador in jogadoresTitularesDefesas %}
+                        <a>Nome:</a>
+                        <a href={% url "bd-playerinfo" pk cc jogador.user_cc.cc %} >{{ jogador.user_cc.first_name }}   {{ jogador.user_cc.last_name }}</a>
+                        <a>Posicao: </a>
+                        <a>{{ jogador.posicao }}</a>
+                        {% if jogador.capitao == True %}
+                            <a>Capitao </a>
+                        {% endif %}
+                        <br>
+              {% endfor %}
+                    <br>
+            <a>Medios</a>
+            <br>
+              {% for jogador in jogadoresTitularesMedios %}
+                        <a>Nome:</a>
+                        <a href={% url "bd-playerinfo" pk cc jogador.user_cc.cc %} >{{ jogador.user_cc.first_name }}   {{ jogador.user_cc.last_name }}</a>
+                        <a>Posicao: </a>
+                        <a>{{ jogador.posicao }}</a>
+                         {% if jogador.capitao == True %}
+                            <a>Capitao </a>
+                        {% endif %}
+                        <br>
+              {% endfor %}
+                    <br>
+            <a>Avancados</a>
+            <br>
+              {% for jogador in jogadoresTitularesAvancados %}
+                        <a>Nome:</a>
+                        <a href={% url "bd-playerinfo" pk cc jogador.user_cc.cc %} >{{ jogador.user_cc.first_name }}   {{ jogador.user_cc.last_name }}</a>
+                        <a>Posicao: </a>
+                        <a>{{ jogador.posicao }}</a>
+                       {% if jogador.capitao == True %}
+                            <a>Capitao </a>
+                        {% endif %}
+                        <br>
+              {% endfor %}
+                    <br>
+            <a>Suplentes</a>
+            <br>
+              {% for jogador in jogadoresSuplentes %}
+                        <a>Nome:</a>
+                        <a href={% url "bd-playerinfo" pk cc jogador.user_cc.cc %} >{{ jogador.user_cc.first_name }}   {{ jogador.user_cc.last_name }}</a>
+                        <a>Posicao: </a>
+                        <a>{{ jogador.posicao }}</a>
+                         {% if jogador.capitao == True %}
+                            <a>Capitao </a>
+                        {% endif %}
+                        <br>
+              {% endfor %}
+                        <br>
+            <a>Reservas</a>
+            <br>
+              {% for jogador in jogadoresReservas %}
+                        <a>Nome:</a>
+                        <a href={% url "bd-playerinfo" pk cc jogador.user_cc.cc %} >{{ jogador.user_cc.first_name }}   {{ jogador.user_cc.last_name }}</a>
+                        <a>Posicao: </a>
+                        <a>{{ jogador.posicao }}</a>
+                         {% if jogador.capitao == True %}
+                            <a>Capitao </a>
+                        {% endif %}
+                        <br>
+              {% endfor %}
+        </font>
+        <br><br>
+        <br><br>
+    </div>
+{% endblock %}

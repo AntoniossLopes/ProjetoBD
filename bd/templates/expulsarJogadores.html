@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+        <font color="blue">
+            <br>
+            <h2><b>Expulsar Menu</b></h2>
+            <br>
+            <br>
+          <form method="post" >
+              {% csrf_token %}
+            {% for needconfirm in jogadores %}
+                <a>Username</a>
+                <a>{{ needconfirm.user_cc.username }}</a>
+                 <input type="hidden" name="Id" value={{ needconfirm.username }}>
+                <select name = "tipo" >
+                        <option value = "kick">confirm</option>
+                        <option value = "not gestor">not confirmed</option>
+                </select>
+                <br>
+            {% endfor %}
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary"><font size="5">Confirm</font></button>
+              <a href={% url 'bd-teamMenu' pk cc %} class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">voltar</a>
+              <a href={% url 'bd-home' %} class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Home</a>
+         </form>
+        </font>
+        <br><br>
+    </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+        <font color="blue">
+            <br>
+            <h2><font size="25">Jogos "{{ torneio.nome }}" </font></h2>
+            <br>
+            <font size="5">
+                {% for jogo in jogos %}
+                    <a><b>Jogo #{{ jogo.id }}:</b></a>
+                    <a><b>Equipas: </b>{{ jogo.equipa1.nome }} vs {{ jogo.equipa2.nome }}</a>
+                    <a><b>Data: </b>{{ jogo.date }}</a>
+                    <a><b>Resultado: </b>{{ jogo.equipaAGolos }} - {{ jogo.equipaBGolos }}</a>
+                {% endfor %}
+            <br>
+                {{ jogo.equipa1.capitao.nome }}
+                <a href={% url 'bd-infotour' torneio.pk user.pk %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Voltar</a>
+            <br>
+            </font>
+            <br>
+        </font>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+      <br>
+      <font color="blue">
+        <h2><font size="25">MY TEAM</font></h2>
+        <br>
+           <b>
+                <h2>Join Team</h2>
+                <br>
+              {% for jogador in jogadores_user %}
+                <b><a>Nome Equipa:</a></b>
+                <a href="{% url 'bd-teamMenu' jogador.equipa.pk pk %}">{{ jogador.equipa.nome }}</a>
+                <br>
+              {% endfor %}
+           </b>
+        <br>
+      </font>
+      <br><br>
+    </div>
+{% endblock %}

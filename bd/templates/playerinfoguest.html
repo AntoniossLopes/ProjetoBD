@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+      <br>
+      <font color="blue">
+        <h2><font size="25">Player Info</font></h2>
+        <br>
+            <a href={% url 'bd-teamdetail' pk  %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Voltar </a>
+           <b>
+               <br>
+               <br>
+              <a>Nome de Jogador:</a>
+               {{ jogador.user_cc.first_name}}  {{ jogador.user_cc.last_name }}
+               <br>
+               <a>Posicao:</a>
+               {{ jogador.posicao }}
+               <br>
+               <a>Contacto:</a>
+               {{ jogador.user_cc.contacto }}
+                <br>
+           </b>
+        <br>
+      </font>
+      <br><br>
+    </div>
+{% endblock %}

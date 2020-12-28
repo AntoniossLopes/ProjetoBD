@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #f8f8f8" align="center">
+        <font color="blue">
+            <br>
+            <h2><font size="25">Jogos da Próxima Semana</font></h2>
+            <br>
+            <font size="5">
+                {% for jogo in jogos %}
+                    <a>Jogo #{{ jogo.id }}:</a>
+                    <a>Equipas: {{ jogo.equipa1.nome }} vs {{ jogo.equipa2.nome }}</a>
+                    <a>Data: {{ jogo.date }}</a>
+                    <a>Campo: {{ jogo.campo.nome }}</a>
+                    <a>Torneio: {{ jogo.torneio.nome }}</a>
+                    <br>
+                {% endfor %}
+            </font>
+            <br>
+        </font>
+    </div>
+{% endblock %}
