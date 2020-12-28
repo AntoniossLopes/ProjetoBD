@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #ffffff">>
+    <center>
+      <h2>Profile</h2>
+        <a>Name:</a>
+      <a>{{ user.first_name }} {{ user.last_name }}</a>
+        <br>
+        <a>Email:</a>
+        <a>{{ user.email}}</a>
+        <br>
+        <a>CC Number:</a>
+        <a>{{ user.cc }}</a>
+        <br>
+        <a>Phone Number:</a>
+        <a>{{ user.contacto }}</a>
+        <br>
+    </center>
+    </div>
+{% endblock %}

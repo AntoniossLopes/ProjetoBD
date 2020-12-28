@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="background: #ffffff">>
+    <center>
+        <p>Torneios </p>
+        {% for torneio in torneio_numero %}
+            <a>Nome Torneio:</a>
+            {{ torneio.nome }}
+            <button type="Details"></button>
+        {% endfor %}
+           <br>
+    </center>
+    </div>
+{% endblock %}
